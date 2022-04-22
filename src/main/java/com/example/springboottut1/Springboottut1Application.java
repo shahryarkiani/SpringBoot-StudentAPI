@@ -15,7 +15,7 @@ public class Springboottut1Application {
 
 	@GetMapping
 	public String hello() {
-		return "Hello World";
+		return "Hello World but new";
 	}
 
 }
