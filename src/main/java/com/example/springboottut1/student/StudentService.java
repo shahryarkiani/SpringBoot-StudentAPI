@@ -4,9 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.beans.Transient;
-import java.time.LocalDate;
-import java.time.Month;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -33,6 +30,11 @@ public class StudentService {
             throw new IllegalStateException("Email already in use");
         }
         studentRepository.save(student);
+    }
+
+    public Optional<Student> getStudent(Long studentId)
+    {
+        return studentRepository.findById(studentId);
     }
 
     public void deleteStudent(Long id) {

@@ -1,17 +1,19 @@
 package com.example.springboottut1.student;
 
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.Period;
 
 @Entity
 @Table
-public class Student {
+public class Student implements Comparable<Student> {
     @Id
     @SequenceGenerator(
             name = "student_sequence",
             sequenceName = "student_sequence",
-            allocationSize = 1
+            allocationSize = 1,
+            initialValue =  1111111
     )
     @GeneratedValue(
             strategy = GenerationType.SEQUENCE,
@@ -96,4 +98,11 @@ public class Student {
     }
 
 
+    @Override
+    public int compareTo(Student o) {
+        if (this.id > o.id)
+            return 1;
+        else
+            return -1;
+    }
 }
