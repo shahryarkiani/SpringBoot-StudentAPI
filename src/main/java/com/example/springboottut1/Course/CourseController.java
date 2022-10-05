@@ -26,6 +26,11 @@ public class CourseController {
         return courseService.getCourse(courseId);
     }
 
+    @PostMapping(path = "{courseId}/email")
+    public void sendEmail(@PathVariable("courseId") Long courseId, @RequestBody String message){
+        courseService.sendEmailToAllStudents(message, courseId);
+    }
+
     @PostMapping
     public void addNewCourse(@RequestBody Course newCourse){courseService.addNewCourse(newCourse);}
 
